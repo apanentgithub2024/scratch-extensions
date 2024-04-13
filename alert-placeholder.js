@@ -1,11 +1,11 @@
 (function(Scratch) {
-  "use strict"
+	"use strict"
 	
-  if (!Scratch.extensions.unsandboxed) {
+	if (!Scratch.extensions.unsandboxed) {
 		throw new Error("Alert extension must run unsandboxed for use")
-  }
+	}
 	
-  class Extension {
+	class Extension {
 		getInfo() {
 			return {
 				id: "alert",
