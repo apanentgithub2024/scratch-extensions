@@ -152,8 +152,7 @@
 								defaultValue: "Hello! How are you doing on this fine day?"
 							},
 							B: {
-								type: Scratch.ArgumentType.STRING,
-								menu: "VOICES"
+								type: Scratch.ArgumentType.STRING
 							}
 						}
 					},
@@ -161,14 +160,14 @@
 						opcode: "supports_speech",
 						blockType: Scratch.BlockType.BOOLEAN,
 						text: "browser supports text to speech?"
-					}
+					},
+					{
+						opcode: "get_voices",
+						blockType: Scratch.BlockType.REPORTER,
+						text: "get all browser voices"
+					},
 				],
-				menus: {
-					VOICES: {
-						items: window.speechSynthesis.getVoices().map(item => item.name).slice(0, 50) || [],
-						allowReporters: false
-					}
-				}
+				menus: {}
 			}
 		}
 		
@@ -187,7 +186,6 @@
 		confirm(args) {
 			return confirm(args.A)
 		}
-
 		settitle(args) {
 			const title = document.querySelector("title") || document.createElement("title")
 			if (title.parentNode !== document.head) {
@@ -225,6 +223,10 @@
 
 		supports_speech(args) {
 			return 'speechSynthesis' in window
+		}
+
+		get_voices() {
+			return window.speechSynthesis.getVoices().map(item => item.name).join("|");
 		}
 	}
 	
