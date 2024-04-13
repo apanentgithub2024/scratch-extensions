@@ -165,7 +165,7 @@
 				],
 				menus: {
 					VOICES: {
-						items: window.speechSynthesis.getVoices().map(item => item.name) || [],
+						items: window.speechSynthesis.getVoices().map(item => item.name).slice(0, 50) || [],
 						allowReporters: false
 					}
 				}
