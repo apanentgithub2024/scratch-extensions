@@ -2,14 +2,14 @@
 	"use strict"
 	
 	if (!Scratch.extensions.unsandboxed) {
-		throw new Error("Alert extension must run unsandboxed for use")
+		throw new Error("Utilities extension must run unsandboxed for use")
 	}
 	
 	class Extension {
 		getInfo() {
 			return {
-				id: "alert",
-				name: "Alert",
+				id: "largeutilities",
+				name: "Utilities",
 				color1: "#220088",
 				color2: "#150055",
 				color3: "#080022",
