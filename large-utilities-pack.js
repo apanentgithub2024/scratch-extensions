@@ -52,6 +52,21 @@
 						}
 					},
 					{
+						opcode: "prompt_default",
+						blockType: Scratch.BlockType.REPORTER,
+						text: "prompt [A] default input [B]",
+						arguments: {
+							A: {
+								type: Scratch.ArgumentType.STRING,
+								defaultValue: "Type in anything!"
+							},
+							B: {
+								type: Scratch.ArgumentType.STRING,
+								defaultValue: "anything"
+							}
+						}
+					},
+					{
 						opcode: "confirm",
 						blockType: Scratch.BlockType.BOOLEAN,
 						text: "confirm [A]",
@@ -121,6 +136,10 @@
 
 		prompt(args) {
 			return prompt(args.A)
+		}
+
+		prompt_default(args) {
+			return prompt(args.A, args.B)
 		}
 
 		confirm(args) {
