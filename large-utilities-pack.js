@@ -143,11 +143,32 @@
 						}
 					},
 					{
+						opcode: "speak_text_voice",
+						blockType: Scratch.BlockType.COMMAND,
+						text: "speak [A] using voice [B]",
+						arguments: {
+							A: {
+								type: Scratch.ArgumentType.STRING,
+								defaultValue: "Hello! How are you doing on this fine day?"
+							},
+							B: {
+								type: Scratch.ArgumentType.STRING,
+								menu: "VOICES"
+							}
+						}
+					},
+					{
 						opcode: "supports_speech",
 						blockType: Scratch.BlockType.BOOLEAN,
 						text: "browser supports text to speech?"
 					}
-				]
+				],
+				menus: {
+					VOICES: {
+						items: window.speechSynthesis.getVoices() || [],
+						allowReporters: false
+					}
+				}
 			}
 		}
 		
@@ -190,6 +211,14 @@
 		speak_text(args) {
 			if ('speechSynthesis' in window) {
 				const utterance = new SpeechSynthesisUtterance(Scratch.Cast.toString(args.A));
+				window.speechSynthesis.speak(utterance)
+			}
+		}
+
+		speak_text_voice(args) {
+			if ('speechSynthesis' in window) {
+				const utterance = new SpeechSynthesisUtterance(Scratch.Cast.toString(args.A));
+				utterance.voice = args.B
 				window.speechSynthesis.speak(utterance)
 			}
 		}
