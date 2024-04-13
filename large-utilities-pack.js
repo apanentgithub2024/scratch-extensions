@@ -125,6 +125,27 @@
 								defaultValue: "Uh oh, an error occurred!"
 							}
 						}
+					},
+					{
+						opcode: "label",
+						blockType: Scratch.BlockType.LABEL,
+						text: "Browser Text To Speech"
+					},
+					{
+						opcode: "speak_text",
+						blockType: Scratch.BlockType.COMMAND,
+						text: "speak [A]",
+						arguments: {
+							A: {
+								type: Scratch.ArgumentType.STRING,
+								defaultValue: "Hello! How are you doing on this fine day?"
+							}
+						}
+					},
+					{
+						opcode: "supports_speech",
+						blockType: Scratch.BlockType.BOOLEAN,
+						text: "browser supports text to speech?"
 					}
 				]
 			}
@@ -164,6 +185,17 @@
 
 		fake_error(args) {
 			console.error(args.A)
+		}
+
+		speak_text(args) {
+			if ('speechSynthesis' in window) {
+				const utterance = new SpeechSynthesisUtterance(Scratch.Cast.toString(args.A));
+				window.speechSynthesis.speak(utterance)
+			}
+		}
+
+		supports_speech(args) {
+			return 'speechSynthesis' in window
 		}
 	}
 	
