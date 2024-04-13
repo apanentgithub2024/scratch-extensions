@@ -16,22 +16,22 @@
 				blocks: [
 					{
 						opcode: "label",
-						type: Scratch.BlockType.LABEL,
+						blockType: Scratch.BlockType.LABEL,
 						text: "Browser-like Blocks"
 					},
 					{
 						opcode: "label",
-						type: Scratch.BlockType.LABEL,
+						blockType: Scratch.BlockType.LABEL,
 						text: "They make your project feel like"
 					},
 					{
 						opcode: "label",
-						type: Scratch.BlockType.LABEL,
+						blockType: Scratch.BlockType.LABEL,
 						text: "a website."
 					},
 					{
 						opcode: "alert",
-						type: Scratch.BlockType.COMMAND,
+						blockType: Scratch.BlockType.COMMAND,
 						text: "alert [A]",
 						arguments: {
 							A: {
@@ -42,7 +42,7 @@
 					},
 					{
 						opcode: "prompt",
-						type: Scratch.BlockType.REPORTER,
+						blockType: Scratch.BlockType.REPORTER,
 						text: "prompt [A]",
 						arguments: {
 							A: {
@@ -53,7 +53,7 @@
 					},
 					{
 						opcode: "confirm",
-						type: Scratch.BlockType.BOOLEAN,
+						blockType: Scratch.BlockType.BOOLEAN,
 						text: "confirm [A]",
 						arguments: {
 							A: {
@@ -64,7 +64,7 @@
 					},
 					{
 						opcode: "settitle",
-						type: Scratch.BlockType.COMMAND,
+						blockType: Scratch.BlockType.COMMAND,
 						text: "set title to [A]",
 						arguments: {
 							A: {
@@ -75,12 +75,12 @@
 					},
 					{
 						opcode: "label",
-						type: Scratch.BlockType.LABEL,
+						blockType: Scratch.BlockType.LABEL,
 						text: "Console blocks"
 					},
 					{
 						opcode: "log",
-						type: Scratch.BlockType.COMMAND,
+						blockType: Scratch.BlockType.COMMAND,
 						text: "log [A] into console",
 						arguments: {
 							A: {
@@ -91,7 +91,7 @@
 					},
 					{
 						opcode: "warn",
-						type: Scratch.BlockType.COMMAND,
+						blockType: Scratch.BlockType.COMMAND,
 						text: "warn [A] into console",
 						arguments: {
 							A: {
@@ -102,7 +102,7 @@
 					},
 					{
 						opcode: "fake_error",
-						type: Scratch.BlockType.COMMAND,
+						blockType: Scratch.BlockType.COMMAND,
 						text: "error [A] into console",
 						arguments: {
 							A: {
