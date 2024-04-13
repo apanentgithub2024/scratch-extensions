@@ -17,10 +17,10 @@
 					{
 						opcode: "alert",
 						type: Scratch.BlockType.COMMAND,
-						blockText: "alert [A]",
+						text: "alert [A]",
 						arguments: {
 							A: {
-								argumentType: Scratch.ArgumentType.STRING,
+								type: Scratch.ArgumentType.STRING,
 								defaultValue: "this text"
 							}
 						}
@@ -28,11 +28,11 @@
 				]
 			}
 		}
-
+		
 		alert(args) {
 			alert(args.A)
 		}
 	}
-
+	
 	Scratch.extensions.register(new Extension())
 })(Scratch)
