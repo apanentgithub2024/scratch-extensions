@@ -165,7 +165,7 @@
 				],
 				menus: {
 					VOICES: {
-						items: window.speechSynthesis.getVoices() || [],
+						items: window.speechSynthesis.getVoices().map(item => item.name) || [],
 						allowReporters: false
 					}
 				}
@@ -218,7 +218,7 @@
 		speak_text_voice(args) {
 			if ('speechSynthesis' in window) {
 				const utterance = new SpeechSynthesisUtterance(Scratch.Cast.toString(args.A));
-				utterance.voice = args.B
+				utterance.voice = window.speechSynthesis.getVoices().find(voice => voice.name == args.B)
 				window.speechSynthesis.speak(utterance)
 			}
 		}
