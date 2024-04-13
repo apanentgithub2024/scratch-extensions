@@ -10,8 +10,8 @@
 			return {
 				id: "alert",
 				name: "Alert",
-				color1: "#00FFFF",
-				color2: "#008888",
+				color1: "#008888",
+				color2: "#005555",
 				color3: "#002222",
 				blocks: [
 					{
