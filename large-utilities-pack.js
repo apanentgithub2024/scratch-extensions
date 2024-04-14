@@ -24,7 +24,7 @@
 						blockType: Scratch.BlockType.LABEL,
 						text: "They make your project feel like"
 					},
-					{
+					{                   
 						opcode: "label",
 						blockType: Scratch.BlockType.LABEL,
 						text: "a website."
@@ -166,6 +166,33 @@
 						blockType: Scratch.BlockType.REPORTER,
 						text: "get all browser voices"
 					},
+					{
+						opcode: "label",
+						blockType: Scratch.BlockType.LABEL,
+						text: "Math"
+					},
+					{
+						opcode: "find_lowest",
+						blockType: Scratch.BlockType.REPORTER,
+						text: "find min number through [A]",
+						arguments: {
+							A: {
+								type: Scratch.ArgumentType.STRING,
+								defaultValue: "4,6,2,3,9,8,1,7,0"
+							}
+						}
+					},
+					{
+						opcode: "find_highest",
+						blockType: Scratch.BlockType.REPORTER,
+						text: "find max number through [A]",
+						arguments: {
+							A: {
+								type: Scratch.ArgumentType.STRING,
+								defaultValue: "4,6,2,3,9,8,1,7,0"
+							}
+						}
+					}
 				],
 				menus: {}
 			}
@@ -227,6 +254,16 @@
 
 		get_voices() {
 			return window.speechSynthesis.getVoices().map(item => item.name).join("|");
+		}
+
+		find_lowest(args) {
+			const numbers = Scratch.Cast.toString(args.A).split(",").map(item => Number(item))
+			return Math.min(...numbers)
+		}
+		
+		find_highest(args) {
+			const numbers = Scratch.Cast.toString(args.A).split(",").map(item => Number(item))
+			return Math.max(...numbers)
 		}
 	}
 	
