@@ -278,7 +278,7 @@
 				if ('speechSynthesis' in window) {
 					const utterance = new SpeechSynthesisUtterance(Scratch.Cast.toString(args.A))
 					window.speechSynthesis.speak(utterance)
-					window.speechSynthesis.onend = function() {
+					utterance.onend = function() {
 						resolve()
 					}
 				}
@@ -291,7 +291,7 @@
 					const utterance = new SpeechSynthesisUtterance(Scratch.Cast.toString(args.A));
 					utterance.voice = window.speechSynthesis.getVoices().find(voice => voice.name == args.B)
 					window.speechSynthesis.speak(utterance)
-					window.speechSynthesis.onend = function() {
+					utterance.onend = function() {
 						resolve()
 					}
 				}
