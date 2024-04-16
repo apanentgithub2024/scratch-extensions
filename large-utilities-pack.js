@@ -157,6 +157,31 @@
 						}
 					},
 					{
+						opcode: "speak_text_await",
+						blockType: Scratch.BlockType.COMMAND,
+						text: "speak [A] and wait",
+						arguments: {
+							A: {
+								type: Scratch.ArgumentType.STRING,
+								defaultValue: "Hello! How are you doing on this fine day?"
+							}
+						}
+					},
+					{
+						opcode: "speak_text_voice_await",
+						blockType: Scratch.BlockType.COMMAND,
+						text: "speak [A] using voice [B] and wait",
+						arguments: {
+							A: {
+								type: Scratch.ArgumentType.STRING,
+								defaultValue: "Hello! How are you doing on this fine day?"
+							},
+							B: {
+								type: Scratch.ArgumentType.STRING
+							}
+						}
+					},
+					{
 						opcode: "supports_speech",
 						blockType: Scratch.BlockType.BOOLEAN,
 						text: "browser supports text to speech?"
@@ -246,6 +271,31 @@
 				utterance.voice = window.speechSynthesis.getVoices().find(voice => voice.name == args.B)
 				window.speechSynthesis.speak(utterance)
 			}
+		}
+
+		async speak_text_await(args) {
+			return new Promise(function(resolve) {
+				if ('speechSynthesis' in window) {
+					const utterance = new SpeechSynthesisUtterance(Scratch.Cast.toString(args.A))
+					window.speechSynthesis.speak(utterance)
+					window.speechSynthesis.onend = function() {
+						resolve()
+					}
+				}
+			})
+		}
+
+		async speak_text_voice_await(args) {
+			return new Promise(function(resolve) {
+				if ('speechSynthesis' in window) {
+					const utterance = new SpeechSynthesisUtterance(Scratch.Cast.toString(args.A));
+					utterance.voice = window.speechSynthesis.getVoices().find(voice => voice.name == args.B)
+					window.speechSynthesis.speak(utterance)
+					window.speechSynthesis.onend = function() {
+						resolve()
+					}
+				}
+			})
 		}
 
 		supports_speech(args) {
