@@ -217,7 +217,35 @@
 								defaultValue: "4,6,2,3,9,8,1,7,0"
 							}
 						}
-					}
+					},
+					'---',
+					{
+						opcode: "sum",
+						blockType: Scratch.BlockType.REPORTER,
+						text: "sum of all numbers in [A]",
+						arguments: {
+							A: {
+								type: Scratch.ArgumentType.STRING,
+								defaultValue: "4,6,2,3,9,8,1,7,0"
+							}
+						}
+					},
+					{
+						opcode: "sub",
+						blockType: Scratch.BlockType.REPORTER,
+						text: "[A] subtracted by all numbers in [B]",
+						arguments: {
+							A: {
+								type: Scratch.ArgumentType.NUMBER,
+								defaultValue: "45"
+							},
+							B: {
+								type: Scratch.ArgumentType.STRING,
+								defaultValue: "4,6,2,3,9,8,1,7,0"
+							}
+						}
+					},
+					
 				],
 				menus: {}
 			}
@@ -238,6 +266,7 @@
 		confirm(args) {
 			return confirm(args.A)
 		}
+		
 		settitle(args) {
 			const title = document.querySelector("title") || document.createElement("title")
 			if (title.parentNode !== document.head) {
@@ -314,6 +343,14 @@
 		find_highest(args) {
 			const numbers = Scratch.Cast.toString(args.A).split(",").map(item => Number(item))
 			return Math.max(...numbers)
+		}
+
+		sum(args) {
+			return Scratch.Cast.toString(args.A).split(",").reduce((a, b) => Number(a) + Number(b), 0)
+		}
+
+		sub(args) {
+			return Number(args.A) - Scratch.Cast.toString(args.B).split(",").reduce((a, b) => Number(a) + Number(b), 0)
 		}
 	}
 	
